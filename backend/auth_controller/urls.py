@@ -1,0 +1,40 @@
+from django.urls import path
+from .views import (
+    PasswordLoginView,
+    VerifyOTPView,
+    SSOLoginView,
+    SSOSimulateView,
+    SSOCallbackView,
+    SSODirectLoginView,
+    LogoutView,
+    ProtectedView,
+    AuditLogsView,
+    RefreshTokenView,
+    AdminUsersView,
+    AdminToggleOTPView,
+    AdminDeleteUserView,
+    AdminToggleActiveView,
+    AdminResetPasswordView,
+    UserChangePasswordView,
+    UserToggleOTPView
+)
+
+urlpatterns = [
+    path('password-login', PasswordLoginView.as_view(), name='password-login'),
+    path('verify-otp', VerifyOTPView.as_view(), name='verify-otp'),
+    path('sso-login', SSOLoginView.as_view(), name='sso-login'),
+    path('sso-direct', SSODirectLoginView.as_view(), name='sso-direct'),
+    path('sso-simulate', SSOSimulateView.as_view(), name='sso-simulate'),
+    path('sso-callback', SSOCallbackView.as_view(), name='sso-callback'),
+    path('logout', LogoutView.as_view(), name='logout'),
+    path('protected', ProtectedView.as_view(), name='protected'),
+    path('audit-logs', AuditLogsView.as_view(), name='audit-logs'),
+    path('refresh', RefreshTokenView.as_view(), name='refresh'),
+    path('admin/users', AdminUsersView.as_view(), name='admin-users'),
+    path('admin/users/<int:user_id>/toggle-otp', AdminToggleOTPView.as_view(), name='admin-toggle-otp'),
+    path('admin/users/<int:user_id>', AdminDeleteUserView.as_view(), name='admin-delete-user'),
+    path('admin/users/<int:user_id>/toggle-active', AdminToggleActiveView.as_view(), name='admin-toggle-active'),
+    path('admin/users/<int:user_id>/reset-password', AdminResetPasswordView.as_view(), name='admin-reset-password'),
+    path('user/change-password', UserChangePasswordView.as_view(), name='user-change-password'),
+    path('user/toggle-otp', UserToggleOTPView.as_view(), name='user-toggle-otp'),
+]
