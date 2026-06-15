@@ -1,0 +1,578 @@
+/* ============================================= */
+/*   LIGHT THEME OVERRIDES                       */
+/*   Applied via body[data-theme="light"]         */
+/* ============================================= */
+
+/* ── Global transition for smooth theme switch ── */
+body,
+body *,
+body *::before,
+body *::after {
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Exclude elements whose own transitions should be preserved */
+body input,
+body button,
+body a,
+body .toggle-thumb,
+body .toggle-track,
+body .toggle-icon,
+body .auth-method-card,
+body .spinner,
+body .page-transition,
+body .theme-toggle,
+body .theme-toggle * {
+  transition:
+    background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+
+/* ===================== */
+/*   Body / Root         */
+/* ===================== */
+
+body[data-theme="light"] {
+  background-color: #f0f2f5;
+}
+
+
+/* ===================== */
+/*   Auth Section BG     */
+/* ===================== */
+
+body[data-theme="light"] .auth-section::before {
+  background: linear-gradient(#f0f2f5, #c0c8d0, #f0f2f5);
+}
+
+body[data-theme="light"] .auth-section .grid-span {
+  background: #e2e6eb;
+}
+
+body[data-theme="light"] .auth-section .grid-span:hover {
+  background: #d0d5dc;
+}
+
+
+/* ===================== */
+/*   Sign-In Card        */
+/* ===================== */
+
+body[data-theme="light"] .signin {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border: 1px solid #d0d5dd;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.8),
+    0 2px 4px rgba(0, 0, 0, 0.06),
+    0 8px 20px rgba(0, 0, 0, 0.08),
+    0 25px 60px rgba(0, 0, 0, 0.1);
+}
+
+body[data-theme="light"] .signin::before {
+  opacity: 0.7;
+}
+
+body[data-theme="light"] .signin .content h2 {
+  background: linear-gradient(135deg, #2a7a8a, #5e4f8a);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+
+/* ===================== */
+/*   Inputs              */
+/* ===================== */
+
+body[data-theme="light"] .signin .content .form .inputBox input {
+  background: #f0f2f5;
+  border: 1px solid #c8cdd5;
+  color: #1a1a2e;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.04),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.02);
+}
+
+body[data-theme="light"] .signin .content .form .inputBox input:focus {
+  border-color: #4a9eaa;
+  box-shadow:
+    inset 0 2px 4px rgba(0, 0, 0, 0.04),
+    0 0 0 3px rgba(74, 158, 170, 0.12);
+}
+
+body[data-theme="light"] .signin .content .form .inputBox i {
+  color: #8890a0;
+}
+
+body[data-theme="light"] .signin .content .form .inputBox input:focus ~ i,
+body[data-theme="light"] .signin .content .form .inputBox input:valid ~ i {
+  color: #3a8a96;
+}
+
+
+/* ===================== */
+/*   Submit Buttons      */
+/* ===================== */
+
+body[data-theme="light"] .signin .content .form .inputBox input[type="submit"],
+body[data-theme="light"] .signin .content .form .inputBox button[type="submit"] {
+  background: linear-gradient(180deg, #3a9aa8 0%, #2d7f8a 100%);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(58, 154, 168, 0.2);
+}
+
+body[data-theme="light"] .signin .content .form .inputBox input[type="submit"]:hover,
+body[data-theme="light"] .signin .content .form .inputBox button[type="submit"]:hover {
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    0 8px 20px rgba(58, 154, 168, 0.25);
+}
+
+
+/* ===================== */
+/*   Links               */
+/* ===================== */
+
+body[data-theme="light"] .signin .content .form .links a,
+body[data-theme="light"] .signin .content .form .links button {
+  color: #888;
+}
+
+body[data-theme="light"] .signin .content .form .links a:nth-child(2),
+body[data-theme="light"] .signin .content .form .links button:nth-child(2),
+body[data-theme="light"] .signin .content .form .links .link-green {
+  color: #2a7a8a;
+}
+
+body[data-theme="light"] .signin .content .form .links a:hover,
+body[data-theme="light"] .signin .content .form .links button:hover {
+  color: #2a7a8a;
+}
+
+body[data-theme="light"] .btn-link {
+  color: #888;
+}
+
+body[data-theme="light"] .btn-link:hover {
+  color: #2a7a8a;
+}
+
+
+/* ===================== */
+/*   Error / Info Msgs   */
+/* ===================== */
+
+body[data-theme="light"] .error-message {
+  background-color: rgba(220, 80, 80, 0.08);
+  color: #c04040;
+  border-left-color: #c04040;
+}
+
+body[data-theme="light"] .info-message {
+  background-color: rgba(58, 154, 168, 0.08);
+  color: #2a7a8a;
+  border-left-color: #2a7a8a;
+}
+
+
+/* ===================== */
+/*   Auth Method Cards   */
+/* ===================== */
+
+body[data-theme="light"] .auth-method-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border: 1px solid rgba(58, 138, 158, 0.2);
+  box-shadow:
+    inset 0 0 12px rgba(58, 138, 158, 0.04),
+    inset 0 0 4px rgba(94, 79, 138, 0.03),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+body[data-theme="light"] .auth-method-card:hover {
+  border-color: rgba(58, 138, 158, 0.35);
+  background: linear-gradient(180deg, #ffffff 0%, #f2f6f8 100%);
+  box-shadow:
+    inset 0 0 18px rgba(58, 138, 158, 0.06),
+    inset 0 0 6px rgba(94, 79, 138, 0.05),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 12px 32px rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .auth-method-card h3 {
+  color: #1a1a2e;
+}
+
+body[data-theme="light"] .auth-method-card p {
+  color: #6a7080;
+}
+
+
+/* ===================== */
+/*   Info Box / SSO Info */
+/* ===================== */
+
+body[data-theme="light"] .info-box {
+  background-color: #f4f6f8;
+  border: 1px solid #d8dee5;
+  border-left: 3px solid rgba(94, 79, 138, 0.35);
+}
+
+body[data-theme="light"] .info-box h4 {
+  color: #5e4f8a;
+}
+
+body[data-theme="light"] .info-box li {
+  color: #555;
+}
+
+body[data-theme="light"] .info-box li::before {
+  color: #3a8a96;
+}
+
+body[data-theme="light"] .info-box li strong {
+  color: #222;
+}
+
+body[data-theme="light"] .sso-info {
+  background-color: #f4f6f8;
+  border: 1px solid #d8dee5;
+  border-left: 3px solid rgba(58, 138, 158, 0.3);
+}
+
+body[data-theme="light"] .sso-info p {
+  color: #555;
+}
+
+
+/* ===================== */
+/*   SSO Button          */
+/* ===================== */
+
+body[data-theme="light"] .btn-sso {
+  background: linear-gradient(180deg, #3a9aa8 0%, #2d7f8a 100%);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(58, 154, 168, 0.2);
+}
+
+
+/* ===================== */
+/*   Credential Grid     */
+/* ===================== */
+
+body[data-theme="light"] .cred-grid {
+  border-color: #d8dee5;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+body[data-theme="light"] .cred-row--header {
+  background: #edf0f4;
+  color: #667;
+}
+
+body[data-theme="light"] .cred-row:not(.cred-row--header) {
+  background: #f8f9fb;
+  color: #555;
+}
+
+body[data-theme="light"] .cred-row:not(.cred-row--header):hover {
+  background: #f0f3f6;
+}
+
+body[data-theme="light"] .cred-row {
+  border-bottom-color: #e8ecf0;
+}
+
+body[data-theme="light"] .cred-user {
+  color: #1a1a2e;
+}
+
+body[data-theme="light"] .cred-pass {
+  color: #667;
+}
+
+body[data-theme="light"] .divider-with-badge::before {
+  background: #d8dee5;
+}
+
+body[data-theme="light"] .divider-badge {
+  background: #f8f9fb;
+  border-color: #d0d5dd;
+  color: #5e4f8a;
+}
+
+
+/* ===================== */
+/*   OTP Input           */
+/* ===================== */
+
+body[data-theme="light"] .otp-input {
+  color: #2a7a8a !important;
+}
+
+
+/* ===================== */
+/*   Spinner             */
+/* ===================== */
+
+body[data-theme="light"] .spinner {
+  border-color: #e0e0e0;
+  border-top-color: #3a9aa8;
+}
+
+body[data-theme="light"] .loading-state p {
+  color: #888;
+}
+
+
+/* ========================================== */
+/*   DASHBOARD — LIGHT THEME                  */
+/* ========================================== */
+
+body[data-theme="light"] .dashboard-container {
+  background-color: #f0f2f5;
+}
+
+
+/* ── Header ── */
+
+body[data-theme="light"] .dashboard-header {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border-bottom: 1px solid #d8dee5;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .dashboard-header h1 {
+  background: linear-gradient(135deg, #2a7a8a, #5e4f8a);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body[data-theme="light"] .btn-logout,
+body[data-theme="light"] .btn-back {
+  background: linear-gradient(180deg, #f4f6f8 0%, #edf0f4 100%);
+  color: #555;
+  border-color: #d0d5dd;
+}
+
+body[data-theme="light"] .btn-logout:hover,
+body[data-theme="light"] .btn-back:hover {
+  color: #2a7a8a;
+  border-color: #b8c0cc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ── Welcome Card ── */
+
+body[data-theme="light"] .welcome-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border-color: #d0d5dd;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .welcome-card::before {
+  opacity: 0.6;
+}
+
+body[data-theme="light"] .welcome-card h2 {
+  color: #1a1a2e;
+}
+
+body[data-theme="light"] .welcome-card p {
+  color: #667;
+}
+
+
+/* ── Info Cards ── */
+
+body[data-theme="light"] .info-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border: 1px solid #d0d5dd;
+  border-left: 3px solid rgba(94, 79, 138, 0.3);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .info-card:hover {
+  border-color: #c0c8d0;
+  border-left-color: rgba(94, 79, 138, 0.5);
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+body[data-theme="light"] .info-card h3 {
+  color: #2a7a8a;
+  border-bottom-color: #e8ecf0;
+}
+
+body[data-theme="light"] .info-card p {
+  color: #555;
+}
+
+body[data-theme="light"] .info-card li {
+  color: #444;
+  border-bottom-color: #f0f2f5;
+}
+
+body[data-theme="light"] .info-card li::before {
+  color: #3a8a96;
+}
+
+body[data-theme="light"] .info-item {
+  border-bottom-color: #f0f2f5;
+}
+
+body[data-theme="light"] .info-item .label {
+  color: #778;
+}
+
+body[data-theme="light"] .info-item .value {
+  color: #1a1a2e;
+}
+
+body[data-theme="light"] .info-item .value.success {
+  color: #2a8a5a;
+}
+
+body[data-theme="light"] .success-message {
+  background-color: rgba(42, 138, 90, 0.08);
+  color: #2a8a5a;
+  border-left-color: #2a8a5a;
+}
+
+
+/* ── Actions Card ── */
+
+body[data-theme="light"] .actions-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border-color: #d0d5dd;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .actions-card::before {
+  opacity: 0.5;
+}
+
+body[data-theme="light"] .actions-card h3 {
+  color: #2a7a8a;
+}
+
+body[data-theme="light"] .btn-action {
+  background: linear-gradient(180deg, #3a9aa8 0%, #2d7f8a 100%);
+  color: #fff;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 4px 12px rgba(58, 154, 168, 0.15);
+}
+
+body[data-theme="light"] .btn-action:hover {
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2),
+    0 4px 8px rgba(0, 0, 0, 0.12),
+    0 8px 20px rgba(58, 154, 168, 0.2);
+}
+
+
+/* ── Audit Logs Card ── */
+
+body[data-theme="light"] .audit-logs-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9fb 100%);
+  border: 1px solid #d0d5dd;
+  border-left: 3px solid rgba(58, 138, 158, 0.3);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+body[data-theme="light"] .logs-header h3 {
+  color: #2a7a8a;
+}
+
+body[data-theme="light"] .btn-refresh {
+  background: linear-gradient(180deg, #3a9aa8 0%, #2d7f8a 100%);
+  color: #fff;
+}
+
+body[data-theme="light"] .no-logs {
+  color: #888;
+}
+
+
+/* ── Logs Table ── */
+
+body[data-theme="light"] .logs-table {
+  border-color: #d8dee5;
+  box-shadow: none;
+}
+
+body[data-theme="light"] .logs-table th {
+  background-color: #edf0f4;
+  color: #667;
+  border-bottom-color: #d8dee5;
+}
+
+body[data-theme="light"] .logs-table td {
+  border-bottom-color: #f0f2f5;
+  color: #444;
+}
+
+body[data-theme="light"] .logs-table tr:hover {
+  background-color: #f4f6f8;
+}
+
+body[data-theme="light"] .logs-table summary {
+  color: #2a7a8a;
+}
+
+body[data-theme="light"] .logs-table summary:hover {
+  color: #5e4f8a;
+}
+
+body[data-theme="light"] .logs-table pre {
+  background-color: #f0f2f5;
+  border-color: #d8dee5;
+  color: #444;
+  box-shadow: none;
+}
+
+body[data-theme="light"] .loading {
+  color: #888;
+}
+
+
+/* ── Focus Styles ── */
+
+body[data-theme="light"] *:focus {
+  outline-color: #3a9aa8;
+}
+
+body[data-theme="light"] button:focus,
+body[data-theme="light"] input:focus,
+body[data-theme="light"] select:focus,
+body[data-theme="light"] textarea:focus {
+  outline-color: #3a9aa8;
+}

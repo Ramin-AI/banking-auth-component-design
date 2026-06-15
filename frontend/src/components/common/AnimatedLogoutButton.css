@@ -1,0 +1,248 @@
+/* AnimatedLogoutButton.css - Scoped under .animated-logout-wrapper */
+
+.animated-logout-wrapper .logoutButton {
+  --figure-duration: 100;
+  --transform-figure: none;
+  --walking-duration: 100;
+  --transform-arm1: none;
+  --transform-wrist1: none;
+  --transform-arm2: none;
+  --transform-wrist2: none;
+  --transform-leg1: none;
+  --transform-calf1: none;
+  --transform-leg2: none;
+  --transform-calf2: none;
+  background: none;
+  border: 0;
+  color: #f4f7ff;
+  cursor: pointer;
+  display: block;
+  font-family: "Quicksand", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  outline: none;
+  padding: 0 0 0 20px;
+  perspective: 100px;
+  position: relative;
+  text-align: left;
+  width: 130px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.animated-logout-wrapper .logoutButton::before {
+  background-color: #1f2335;
+  border-radius: 5px;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  transform: none;
+  transition: transform 50ms ease;
+  width: 100%;
+  z-index: 2;
+}
+
+.animated-logout-wrapper .logoutButton:hover .door {
+  transform: rotateY(20deg);
+}
+
+.animated-logout-wrapper .logoutButton:active::before {
+  transform: scale(0.96);
+}
+
+.animated-logout-wrapper .logoutButton:active .door {
+  transform: rotateY(28deg);
+}
+
+.animated-logout-wrapper .logoutButton.clicked::before {
+  transform: none;
+}
+
+.animated-logout-wrapper .logoutButton.clicked .door {
+  transform: rotateY(35deg);
+}
+
+.animated-logout-wrapper .logoutButton.door-slammed .door {
+  transform: none;
+  transition: transform 100ms ease-in 250ms;
+}
+
+.animated-logout-wrapper .logoutButton.falling {
+  animation: logoutShake 200ms linear;
+}
+
+.animated-logout-wrapper .logoutButton.falling .bang {
+  animation: logoutFlash 300ms linear;
+}
+
+.animated-logout-wrapper .logoutButton.falling .figure {
+  animation: logoutSpin 1000ms infinite linear;
+  bottom: -1080px;
+  opacity: 0;
+  right: 1px;
+  transition: transform calc(var(--figure-duration) * 1ms) linear,
+    bottom calc(var(--figure-duration) * 1ms) cubic-bezier(0.7, 0.1, 1, 1) 100ms,
+    opacity calc(var(--figure-duration) * 0.25ms) linear
+      calc(var(--figure-duration) * 0.75ms);
+  z-index: 1;
+}
+
+/* Light theme */
+.animated-logout-wrapper .logoutButton--light::before {
+  background-color: #f4f7ff;
+}
+
+.animated-logout-wrapper .logoutButton--light .button-text {
+  color: #1f2335;
+}
+
+.animated-logout-wrapper .logoutButton--light .door,
+.animated-logout-wrapper .logoutButton--light .doorway {
+  fill: #1f2335;
+}
+
+/* Dark theme (default) */
+.animated-logout-wrapper .logoutButton--dark::before {
+  background-color: #1f2335;
+}
+
+.animated-logout-wrapper .logoutButton--dark .button-text {
+  color: #f4f7ff;
+}
+
+.animated-logout-wrapper .button-text {
+  color: #f4f7ff;
+  font-weight: 500;
+  position: relative;
+  z-index: 10;
+}
+
+.animated-logout-wrapper svg {
+  display: block;
+  position: absolute;
+}
+
+.animated-logout-wrapper .figure {
+  bottom: 5px;
+  fill: #4371f7;
+  right: 18px;
+  transform: var(--transform-figure);
+  transition: transform calc(var(--figure-duration) * 1ms)
+    cubic-bezier(0.2, 0.1, 0.8, 0.9);
+  width: 30px;
+  z-index: 4;
+}
+
+.animated-logout-wrapper .door,
+.animated-logout-wrapper .doorway {
+  bottom: 4px;
+  fill: #f4f7ff;
+  right: 12px;
+  width: 32px;
+}
+
+.animated-logout-wrapper .door {
+  transform: rotateY(20deg);
+  transform-origin: 100% 50%;
+  transform-style: preserve-3d;
+  transition: transform 200ms ease;
+  z-index: 5;
+}
+
+.animated-logout-wrapper .door path {
+  fill: #4371f7;
+  stroke: #4371f7;
+  stroke-width: 4;
+}
+
+.animated-logout-wrapper .doorway {
+  z-index: 3;
+}
+
+.animated-logout-wrapper .bang {
+  opacity: 0;
+}
+
+.animated-logout-wrapper .arm1,
+.animated-logout-wrapper .wrist1,
+.animated-logout-wrapper .arm2,
+.animated-logout-wrapper .wrist2,
+.animated-logout-wrapper .leg1,
+.animated-logout-wrapper .calf1,
+.animated-logout-wrapper .leg2,
+.animated-logout-wrapper .calf2 {
+  transition: transform calc(var(--walking-duration) * 1ms) ease-in-out;
+}
+
+.animated-logout-wrapper .arm1 {
+  transform: var(--transform-arm1);
+  transform-origin: 52% 45%;
+}
+
+.animated-logout-wrapper .wrist1 {
+  transform: var(--transform-wrist1);
+  transform-origin: 59% 55%;
+}
+
+.animated-logout-wrapper .arm2 {
+  transform: var(--transform-arm2);
+  transform-origin: 47% 43%;
+}
+
+.animated-logout-wrapper .wrist2 {
+  transform: var(--transform-wrist2);
+  transform-origin: 35% 47%;
+}
+
+.animated-logout-wrapper .leg1 {
+  transform: var(--transform-leg1);
+  transform-origin: 47% 64.5%;
+}
+
+.animated-logout-wrapper .calf1 {
+  transform: var(--transform-calf1);
+  transform-origin: 55.5% 71.5%;
+}
+
+.animated-logout-wrapper .leg2 {
+  transform: var(--transform-leg2);
+  transform-origin: 43% 63%;
+}
+
+.animated-logout-wrapper .calf2 {
+  transform: var(--transform-calf2);
+  transform-origin: 41.5% 73%;
+}
+
+@keyframes logoutSpin {
+  from {
+    transform: rotate(0deg) scale(0.94);
+  }
+  to {
+    transform: rotate(359deg) scale(0.94);
+  }
+}
+
+@keyframes logoutShake {
+  0% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-1deg);
+  }
+}
+
+@keyframes logoutFlash {
+  0% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 0;
+  }
+}
