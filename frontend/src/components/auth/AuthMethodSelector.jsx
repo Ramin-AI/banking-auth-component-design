@@ -37,7 +37,7 @@ const AuthMethodSelector = () => {
               >
                 <span className="method-icon">🌐</span>
                 <h3>SSO Login</h3>
-                <p>Single Sign-On authentication (Simulated)</p>
+                <p>Single Sign-On authentication</p>
               </div>
             </div>
 

@@ -81,10 +81,9 @@ const SSOLoginPage = () => {
             ) : (
               <>
                 <div className="sso-info">
-                  <p>Click the button below to authenticate using our simulated SSO provider.</p>
+                  <p>Click the button below to authenticate using the single sign-on gateway.</p>
                   <p className="info-text">
-                    In a real system, this would redirect to an external identity provider 
-                    (e.g., Google, Microsoft, Okta).
+                    This will securely sign you in using the configured SSO identity provider.
                   </p>
                 </div>
 

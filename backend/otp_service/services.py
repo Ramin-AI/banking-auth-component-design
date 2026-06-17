@@ -29,7 +29,6 @@ class OTPService:
             expires_at=expires_at
         )
         
-        # In a real system, send OTP via SMS/Email
         print(f"[OTP Service] Generated OTP for {user.username}: {code}")
         
         return code

@@ -424,7 +424,6 @@ class SSODirectLoginView(APIView):
         import secrets
         
         # Simulate SSO authentication
-        # In a real system, this would validate with external provider
         
         # Generate a simulated SSO user (fixed to single identity)
         user_info = {

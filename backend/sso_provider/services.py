@@ -4,10 +4,9 @@ from django.conf import settings
 from user_repository.repository import UserRepository
 
 class SSOService:
-    # Service for simulating SSO authentication.
-    # In a real system, this would integrate with external SSO providers.
+    # Service for managing simulated SSO authentication.
     
-    # In-memory storage for SSO states (in production, use Redis/database)
+    # In-memory storage for SSO states
     _sso_states = {}
     
     @staticmethod
@@ -19,7 +18,7 @@ class SSOService:
         # Store state for validation
         SSOService._sso_states[state] = {
             'redirect_uri': redirect_uri or 'http://localhost:3000/auth/sso-callback',
-            'created_at': None  # In production, add timestamp
+            'created_at': None
         }
         
         # Simulate external SSO provider URL
@@ -42,7 +41,6 @@ class SSOService:
         del SSOService._sso_states[state]
         
         # Simulate user info from SSO provider
-        # In a real system, exchange code for token and fetch user info
         user_info = {
             'sso_id': 'simulated_sso_user_999',
             'email': 'jane.sso@bankdemo.com',

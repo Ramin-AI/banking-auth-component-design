@@ -2,7 +2,7 @@ To Run:
 
 1- starte the Backend Server:  
 
- Location:  C:\Users\ramin\My codes 1\banking-auth-component-design\backend  
+ Location:  ./backend  
  Command :  python manage.py runserver  
  Running on  http://localhost:8000
 
@@ -10,6 +10,6 @@ To Run:
 
 2- started the Frontend Server:  
 
- Location:  C:\Users\ramin\My codes 1\banking-auth-component-design\frontend  
+ Location:  ./frontend  
  Command Used:  npm start  
  Running on http://localhost:3000
