@@ -12,9 +12,8 @@ class TokenService:
     def generate_tokens(user) -> dict:
     # Generate access and refresh tokens for a user.
     # Returns dict with access_token, refresh_token, and token metadata.
-        # Generate unique JTI (JWT ID) for token tracking
-        access_jti = str(uuid.uuid4())
-        refresh_jti = str(uuid.uuid4())
+        # We use a single session JTI to link access and refresh tokens to the same session lifecycle
+        session_jti = str(uuid.uuid4())
         
         # Calculate expiration times
         access_exp = timezone.now() + settings.JWT_ACCESS_TOKEN_LIFETIME
@@ -25,7 +24,7 @@ class TokenService:
             'user_id': user.id,
             'username': user.username,
             'email': user.email,
-            'jti': access_jti,
+            'jti': session_jti,
             'token_type': 'access',
             'exp': access_exp,
             'iat': timezone.now()
@@ -34,7 +33,7 @@ class TokenService:
         # Refresh token payload
         refresh_payload = {
             'user_id': user.id,
-            'jti': refresh_jti,
+            'jti': session_jti,
             'token_type': 'refresh',
             'exp': refresh_exp,
             'iat': timezone.now()
@@ -47,8 +46,8 @@ class TokenService:
         return {
             'access_token': access_token,
             'refresh_token': refresh_token,
-            'access_jti': access_jti,
-            'refresh_jti': refresh_jti,
+            'access_jti': session_jti,
+            'refresh_jti': session_jti,
             'access_expires_at': access_exp,
             'refresh_expires_at': refresh_exp
         }
@@ -81,15 +80,16 @@ class TokenService:
         if payload.get('user_id') != user.id:
             raise Exception('Token user mismatch')
         
-        # Generate new access token
-        access_jti = str(uuid.uuid4())
+        # Retrieve the session JTI from the refresh token payload
+        session_jti = payload.get('jti')
+        
         access_exp = timezone.now() + settings.JWT_ACCESS_TOKEN_LIFETIME
         
         access_payload = {
             'user_id': user.id,
             'username': user.username,
             'email': user.email,
-            'jti': access_jti,
+            'jti': session_jti,
             'token_type': 'access',
             'exp': access_exp,
             'iat': timezone.now()
@@ -99,6 +99,6 @@ class TokenService:
         
         return {
             'access_token': access_token,
-            'access_jti': access_jti,
+            'access_jti': session_jti,
             'access_expires_at': access_exp
         }

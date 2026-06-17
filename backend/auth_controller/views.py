@@ -67,7 +67,7 @@ class PasswordLoginView(APIView):
         SessionService.create_session(
             user,
             tokens['access_jti'],
-            tokens['access_expires_at'],
+            tokens['refresh_expires_at'],
             request
         )
         
@@ -134,7 +134,7 @@ class VerifyOTPView(APIView):
         SessionService.create_session(
             user,
             tokens['access_jti'],
-            tokens['access_expires_at'],
+            tokens['refresh_expires_at'],
             request
         )
         
@@ -231,7 +231,7 @@ class SSOCallbackView(APIView):
             SessionService.create_session(
                 user,
                 tokens['access_jti'],
-                tokens['access_expires_at'],
+                tokens['refresh_expires_at'],
                 request
             )
             
@@ -372,6 +372,15 @@ class RefreshTokenView(APIView):
         try:
             # Verify refresh token
             payload = TokenService.verify_token(refresh_token)
+            
+            # Check session validity in database
+            session_jti = payload.get('jti')
+            if not SessionService.is_session_valid(session_jti):
+                return Response({
+                    'success': False,
+                    'message': 'Session is inactive or expired'
+                }, status=status.HTTP_401_UNAUTHORIZED)
+                
             user_id = payload.get('user_id')
             
             # Get user
@@ -381,6 +390,12 @@ class RefreshTokenView(APIView):
                     'success': False,
                     'message': 'User not found'
                 }, status=status.HTTP_404_NOT_FOUND)
+                
+            if not user.is_active:
+                return Response({
+                    'success': False,
+                    'message': 'User account is suspended'
+                }, status=status.HTTP_403_FORBIDDEN)
             
             # Generate new access token
             new_tokens = TokenService.refresh_access_token(refresh_token, user)
@@ -433,7 +448,7 @@ class SSODirectLoginView(APIView):
         SessionService.create_session(
             user,
             tokens['access_jti'],
-            tokens['access_expires_at'],
+            tokens['refresh_expires_at'],
             request
         )
         

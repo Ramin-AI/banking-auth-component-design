@@ -1,4 +1,5 @@
 import random
+import secrets
 from datetime import timedelta
 from django.utils import timezone
 from django.conf import settings
@@ -15,8 +16,8 @@ class OTPService:
         # Invalidate previous OTPs
         OTP.objects.filter(user=user, is_used=False).update(is_used=True)
         
-        # Generate random 6-digit code
-        code = ''.join([str(random.randint(0, 9)) for _ in range(settings.OTP_LENGTH)])
+        # Generate random 6-digit code using CSPRNG
+        code = ''.join([str(secrets.randbelow(10)) for _ in range(settings.OTP_LENGTH)])
         
         # Calculate expiry time
         expires_at = timezone.now() + timedelta(minutes=settings.OTP_EXPIRY_MINUTES)
