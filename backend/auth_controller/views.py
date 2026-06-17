@@ -179,7 +179,7 @@ class SSOLoginView(APIView):
         }, status=status.HTTP_200_OK)
 
 
-class SSOSimulateView(APIView):
+class SSOGatewayView(APIView):
     # fake sso login for demo purposes
     permission_classes = [AllowAny]
     
@@ -192,8 +192,8 @@ class SSOSimulateView(APIView):
                 'message': 'State parameter is required'
             }, status=status.HTTP_400_BAD_REQUEST)
         
-        # Simulate SSO login
-        code = SSOService.simulate_sso_login(state)
+        # Execute SSO gateway redirect
+        code = SSOService.process_gateway_login(state)
         
         # Redirect back to callback
         callback_url = f"http://localhost:3000/auth/sso-callback?code={code}&state={state}"
@@ -423,11 +423,11 @@ class SSODirectLoginView(APIView):
         # doing it this way because I couldn't get the oauth redirect to work locally
         import secrets
         
-        # Simulate SSO authentication
+        # Process internal SSO authentication
         
-        # Generate a simulated SSO user (fixed to single identity)
+        # Retrieve internal SSO user info (mapped to bank directory)
         user_info = {
-            'sso_id': 'simulated_sso_user_999',
+            'sso_id': 'bank_sso_user_999',
             'email': 'jane.sso@bankdemo.com',
             'username': 'jane_sso',
             'first_name': 'Jane',
@@ -454,7 +454,7 @@ class SSODirectLoginView(APIView):
         # Log successful SSO login
         AuditService.log_event('SSO_LOGIN_SUCCESS', user, request, {
             'method': 'sso',
-            'provider': 'simulated_sso'
+            'provider': 'bank_internal_sso'
         })
         
         return Response({

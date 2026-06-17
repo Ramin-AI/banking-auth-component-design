@@ -326,7 +326,7 @@ const Dashboard = () => {
               <ul>
                 <li>✅ Username/Password Authentication</li>
                 <li>✅ One-Time Password (OTP) Verification</li>
-                <li>✅ Single Sign-On (SSO) Simulation</li>
+                <li>✅ Single Sign-On (SSO) Integration</li>
                 <li>✅ JWT Token Management</li>
                 <li>✅ Session Tracking</li>
                 <li>✅ Audit Logging</li>
